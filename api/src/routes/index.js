@@ -2,10 +2,10 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require ('axios');
-const { Dog, Temperament, temperament_dog } = require ('../db')
+const { Dog, Temperament, temperament_dog } = require ('../db.js')
+//router.use(express.json())
 const { API_KEY } = process.env;
-//const { Op } = require('sequelize');
- 
+
 const router = Router();
 
 //Configurar los routers
@@ -18,9 +18,11 @@ const getApiInfo = async () => {
         return {
             id: element.id,
             name: element.name,
-            height: element.height.metric,
-            weight: element.weight.metric,
-            lifeSpan: element.life_span,
+            height_min: element.height.metric.split(" - ")[0],
+            height_max: element.height.metric.split(" - ")[1],
+            weight_min: element.weight.metric.split(" - ")[0],
+            weight_max: element.weight.metric.split(" - ")[1],
+            life_span: element.life_span,
             temperament: element.temperament,
             image:element.image.url,
         }
@@ -76,7 +78,7 @@ router.get('/temperament', async (req, res) => {
     let splittemperament = temperaments.filter(word => word.length > 0);
     splittemperament.forEach(element => {
         Temperament.findOrCreate({
-            where: {name: element}
+            where: {name : element}
         })
     });
     const allTemperament = await Temperament.findAll();
@@ -87,18 +89,21 @@ router.post('/dog', async (req,res)=>{
     let {name, height, weight, life_span, image, createdInDb, temperament}= req.body;
     let dogCreated= await Dog.create({
         name,
-        height,
-        weight,
+        height_min,
+        height_max,
+        weight_min,
+        weight_max,
         life_span,
         image,
         createdInDb
     });
-    
+     //busca el temperamento en la bd
       let temperamentDb= await Temperament.findAll({
         where:{name : temperament}
     });
+    // ingresa el temp a la raza creada
     dogCreated.addTemperament(temperamentDb);
-    res.send('Dog created successfully');
+    res.send('Successfully created dog');
 });
 
 
