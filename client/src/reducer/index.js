@@ -1,6 +1,7 @@
 const initialState = {
     dogs : [],
-    allDogs : []
+    allDogs : [],
+    temperaments : []
 }
 
 function rootReducer (state = initialState, action) {
@@ -52,11 +53,24 @@ function rootReducer (state = initialState, action) {
                         return (
                             parseInt(b.weight_min) - parseInt(a.weight_min)
                     )}) 
-                    
             return {
             ...state,
             dogs: sortWeight
         }
+        case 'GET_SEARCH_DOG' :
+            return {
+                ...state,
+                dogs: action.payload
+            }
+        case 'POST_DOG' :
+            return {
+                ...state,
+            }
+        case 'GET_TEMPERAMENTS' :
+            return {
+                ...state,
+                temperaments: action.payload
+            }
         default:
             return state;
     }

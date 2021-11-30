@@ -8,6 +8,7 @@ import { getAllDogs, filterCreated, orderDogs, orderWeight} from '../actions';
 // coponentes
 import Card from './Card';
 import Paginado from './Paginado';
+import SearchBar from './SearchBar';
 
 
 
@@ -59,6 +60,7 @@ return (
         <button onClick={e => {handleClick(e)}}>
         Volver a cargar los personajes
         </button>
+        <SearchBar/>
         <div>
             <select onChange={e => handleSort(e)}>
                 <option value= 'asc'>Ascendente</option>
@@ -85,7 +87,7 @@ return (
                   return (
                     <div>
                         <Link to={'/home/' + element.id}>
-                            <Card key={element.id} image={element.image} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
+                            <Card key={element.id} image={element.image? element.image : <img src='https://i.postimg.cc/gjZX7wqp/friends-gf09118657-1280.jpg'/>} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
                         </Link>
                     </div>
                   );
