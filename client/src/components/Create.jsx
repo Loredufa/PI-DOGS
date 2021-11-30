@@ -28,13 +28,19 @@ setInput({
 })
     console.log(input)
 }
-
-function handleSelect (e) {
-    setInput({
+function handleOnSelector (e) {  // Para el selector de las temperaments, el usuario va eligiendo el q quiere. 
+    setInput ({
         ...input,
-    temperament: [...input.temperament, e.target.value]
-})
+        temperament: [...input.temperament, e.target.value]
+    })
 }
+
+// function handleSelect (e) {
+//     setInput({
+//         ...input,
+//     temperament: [...input.temperament, e.target.value]
+// })
+// }
 function handleSubmit(e) {
     e.preventDefault();
     console.log(input)
@@ -125,7 +131,7 @@ return (
                onChange={(e) => handleChange(e)}
                />               
            </div> 
-            <select onChange={(e) => handleSelect(e)}>
+            <select onChange={(e) => handleOnSelector(e)}>
                 {temperaments.map((tem) => (
                     <option value={tem.name}>{tem.name}</option>
                 ))}
