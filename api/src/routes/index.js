@@ -62,8 +62,7 @@ router.get ('/dogs/:id', async (req, res) => {
     const id = req.params.id;
     const dogTotal = await getAllDogs()
     if (id) {
-        let dogId = dogTotal.filter( element => element.id == id)
-        console.log(dogId)       
+        let dogId = dogTotal.filter( element => element.id == id)     
         dogId.length?
         res.status(200).json(dogId) :
         res.status(404).send('Dog not found')
@@ -85,26 +84,29 @@ router.get('/temperament', async (req, res) => {
     res.send(allTemperament);
 })
 
-router.post('/dog', async (req,res)=>{
-    let {name, height, weight, life_span, image, createdInDb, temperament}= req.body;
-    let dogCreated= await Dog.create({
-        name,
-        height_min,
-        height_max,
-        weight_min,
-        weight_max,
-        life_span,
-        image,
-        createdInDb
-    });
-     //busca el temperamento en la bd
-      let temperamentDb= await Temperament.findAll({
-        where:{name : temperament}
-    });
-    // ingresa el temp a la raza creada
-    dogCreated.addTemperament(temperamentDb);
-    res.send('Successfully created dog');
-});
+router.post('/dog', async (req,res) => { 
+        let {name, height_min, height_max, weight_min, weight_max, temperament, life_span, image, createdInDb}= req.body
+        // Creo la nueva raza en la BD
+        let createdDog = await Dog.create ({
+            name,
+            height_min,
+            height_max,
+            weight_min,
+            weight_max,
+            life_span,
+            image,
+            createdInDb
+        })
+        // El temperamento lo saco de la base de datos cargada previamente con la info de la API
+           let temperamentDb = await Temperament.findAll (
+            {
+            where: {
+                name:temperament } 
+            })
+            // Agrega el temperamento a la raza creada
+            createdDog.addTemperament(temperamentDb)
+            res.send (createdDog)
+                })
 
 
 module.exports = router;

@@ -16,16 +16,26 @@ module.exports = (sequelize) => {
       primaryKey:true,
     },
 
-    height: {
-      type:DataTypes.STRING,
+    height_min: {
+      type:DataTypes.INTEGER,
       allowNull:false,
     },
     
-    weight:{
-      type:DataTypes.STRING,
+    height_max: {
+      type:DataTypes.INTEGER,
       allowNull:false,
     },
-   
+
+    weight_min:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+    },
+
+    weight_max:{
+      type:DataTypes.INTEGER,
+      allowNull:false,
+    },
+
     life_span: {
       type:DataTypes.STRING,
     },
@@ -37,5 +47,4 @@ module.exports = (sequelize) => {
     }
   })
 
-  }
-
+  };
