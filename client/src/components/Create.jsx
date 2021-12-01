@@ -4,11 +4,12 @@ import { Link, useNavigate} from 'react-router-dom';
 import { postDog, getTemperament} from '../actions/'
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function Create (payload) {
+
+export default function Create () {
 const dispatch = useDispatch()
 const navigate = useNavigate();
-const temperaments = useSelector((state) => state.temperaments)
-
+const temperaments = useSelector((state) => state.temperaments);
+const [error, setError] = useState(false);
 
 const [input, setInput] = useState({
     name:'',
@@ -21,6 +22,7 @@ const [input, setInput] = useState({
     //image,
     
 })
+
 function handleChange (e) {
 setInput({
     ...input,
@@ -28,22 +30,23 @@ setInput({
 })
     console.log(input)
 }
-function handleOnSelector (e) {  // Para el selector de las temperaments, el usuario va eligiendo el q quiere. 
-    setInput ({
-        ...input,
-        temperament: [...input.temperament, e.target.value]
-    })
-}
 
-// function handleSelect (e) {
-//     setInput({
-//         ...input,
-//     temperament: [...input.temperament, e.target.value]
-// })
-// }
+function handleSelect (e) {
+    setInput({
+        ...input,
+    temperament: [...input.temperament, e.target.value]
+})
+}
 function handleSubmit(e) {
     e.preventDefault();
     console.log(input)
+    // valido si los campos estan llenos
+    if(input.name === '' || input.height_min === '' || input.height_max=== '' || input.weight_min === '' || input.weight_max === '') {
+            setError(true);
+            return;
+        } 
+    // caso contrario paso los datos
+    setError(false);
     dispatch(postDog(input))
     alert('Breed created!')
     setInput({
@@ -58,6 +61,13 @@ function handleSubmit(e) {
     })
     navigate('/home')
 }
+function handleDelete(el) {
+    setInput({
+        ...input,
+        temperament: input.temperament.filter(temp => temp !== el)
+    })
+}
+
 useEffect(() => {
     dispatch(getTemperament());
 }, []);
@@ -68,7 +78,8 @@ return (
         <Link to= '/home'><button>Back to home</button></Link>
         <h1>Here you can register the breed of your best friend</h1>
         <form onSubmit={(e) => handleSubmit(e)}>
-           <div>
+          {error ? 'You must complete breed, weight and height fields':null}
+           <div>              
                <label>Breed</label>
                <input
                type='text'
@@ -131,15 +142,19 @@ return (
                onChange={(e) => handleChange(e)}
                />               
            </div> 
-            <select onChange={(e) => handleOnSelector(e)}>
+            <select onChange={(e) => handleSelect(e)}>
                 {temperaments.map((tem) => (
                     <option value={tem.name}>{tem.name}</option>
                 ))}
             </select>          
-            <ul><li>{input.temperament.map(el => el + " ,")}</li></ul>
+            {/* <ul><li>{input.temperament.map(el => el + " ,")}</li></ul> */}
             <button type='submit'>Create breed</button>
             </form>  
+            {input.temperament.map(el => 
+                <div className='divTem'>
+                <p>{el}</p>
+                <button className='botonX' onClick={() => handleDelete(el)}>x</button>
+            </div>
+           )}
     </div>
-)
-
-}
+)}
