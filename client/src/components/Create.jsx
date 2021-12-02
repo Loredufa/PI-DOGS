@@ -19,7 +19,7 @@ const [input, setInput] = useState({
     weight_max: '',
     life_span: '',
     temperament: [],
-    //image,
+    image: ''
     
 })
 
@@ -57,7 +57,7 @@ function handleSubmit(e) {
     weight_max: '',
     life_span: '',
     temperament: [],
-    //image,
+    image: ''
     })
     navigate('/home')
 }
@@ -147,7 +147,6 @@ return (
                     <option value={tem.name}>{tem.name}</option>
                 ))}
             </select>          
-            {/* <ul><li>{input.temperament.map(el => el + " ,")}</li></ul> */}
             <button type='submit'>Create breed</button>
             </form>  
             {input.temperament.map(el => 

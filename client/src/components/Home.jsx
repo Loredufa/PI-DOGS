@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // actions
-import { getAllDogs, filterCreated, orderDogs, orderWeight} from '../actions';
+import { getAllDogs, filterCreated, orderDogs, orderWeight } from '../actions';
 // coponentes
 import Card from './Card';
 import Paginado from './Paginado';
 import SearchBar from './SearchBar';
+import FilterTemperament from './FilterTemperament'
 
 
 
@@ -28,9 +29,11 @@ const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
 }
 
+
 useEffect(() => {
     dispatch(getAllDogs());
     }, [dispatch])
+
 
 function handleClick(e){
     e.preventDefault();
@@ -75,9 +78,7 @@ return (
                 <option value='name'>Existing breeds</option>
                 <option value='Our Breeds'>Our Breeds</option>
             </select>
-            <select >
-                <option value='temperament'>Temperament</option>
-            </select>
+            <FilterTemperament/>
             <Paginado
             dogsPerPage = {dogsPerPage}
             alldogs = {alldogs.length}
@@ -87,7 +88,7 @@ return (
                   return (
                     <div>
                         <Link to={'/home/' + element.id}>
-                            <Card key={element.id} image={element.image? element.image : <img src='https://i.postimg.cc/gjZX7wqp/friends-gf09118657-1280.jpg'/>} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
+                            <Card key={element.id} image={element.image? element.image : <img src="https://pixabay.com/es/photos/perro-tejonero-cachorro-mascota-1519374/"/>} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
                         </Link>
                     </div>
                   );
