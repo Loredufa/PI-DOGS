@@ -3,12 +3,13 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../actions/index';         
 import { useEffect } from 'react';
+import { Buttonlp } from './styled/Buttonlp';
 
 export default function Detail () {
     const dispatch = useDispatch()
     const params = useParams();
     const detail = useSelector (state => state.detail)
-      console.log(detail)
+      //console.log(detail)
     useEffect (()=> {
         dispatch(getDetail(params.id)) 
     }, [dispatch])
@@ -27,7 +28,7 @@ return(
             </div> : <p>Loading...</p>
         }
         <Link to='/home'>
-            <button>Go back</button>
+            <Buttonlp>Go back</Buttonlp>
         </Link>
     </div>
 )

@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 //action
 import { getSearchDog } from '../actions';
+// estilos
+import { Buttonlp } from './styled/Buttonlp';
+import { Input } from './styled/Input';
 
 export default function SearchBar () {
 const dispatch = useDispatch()
@@ -22,12 +25,13 @@ function handleSubmit (e) {
 
 return (
     <div>
-        <input 
+        <Input 
         type= 'text'
         placeholder = 'Breed...'
-        onChange = {(e) => handleInputChange(e)}
-        />
-        <button type='submit'onClick={(e) => handleSubmit(e)}>Search</button>
+        onChange = {(e) => handleInputChange(e)}/>
+
+        <Buttonlp type='submit'onClick={(e) => handleSubmit(e)}>Search</Buttonlp>
+        
     </div>
 )
 

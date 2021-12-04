@@ -9,7 +9,7 @@ import Details from './components/Details';
 function App() {
   return (
     <BrowserRouter>
-    <div className="App">
+    <div className='App'>
     <Routes>
       <Route path= '/' element={<LandingPage/>} />
       <Route path= '/home' element={<Home/>} />

@@ -10,6 +10,11 @@ import Card from './Card';
 import Paginado from './Paginado';
 import SearchBar from './SearchBar';
 import FilterTemperament from './FilterTemperament'
+// Estilos
+import { Buttonlp } from './styled/Buttonlp';
+import { Select } from './styled/Select';
+import { Divhome, Divcard } from './styled/Divhome';
+import { Encabezado, Titulo } from './styled/Encabezado';
 
 
 
@@ -20,7 +25,7 @@ const dispatch = useDispatch()
 const alldogs = useSelector ((state) => state.dogs)
 const [orden, setOrden] = useState('')
 const [currentPage, setCurrentPage] = useState(1)
-const [dogsPerPage, setDogsPerPage] = useState(8)
+const [dogsPerPage] = useState(8)
 const indexOfLastDog = currentPage * dogsPerPage //8
 const indexOffFirstDog = indexOfLastDog - dogsPerPage //0
 const currentDog = alldogs.slice(indexOffFirstDog, indexOfLastDog)
@@ -57,28 +62,30 @@ function handleSortWeight (e) {
 }
 
 return (
-    <div>
-        <Link to='/dog' >Create breed</Link>
-        <h1>Welcome</h1>
-        <button onClick={e => {handleClick(e)}}>
-        Volver a cargar los personajes
-        </button>
+    <Divhome> 
+        <Encabezado>     
+        <Titulo>Welcome</Titulo>       
         <SearchBar/>
+        <Link to='/dog' >Create breed</Link>              
+        </Encabezado>
         <div>
-            <select onChange={e => handleSort(e)}>
+            <Select onChange={e => handleSort(e)}>
                 <option value= 'asc'>Ascendente</option>
                 <option value= 'desc'>Descendente</option>
-            </select>
-            <select  onChange={e => handleSortWeight(e)}>
+            </Select>
+            <Select  onChange={e => handleSortWeight(e)}>
                 <option value='weightasc'>Weight ascendente</option>
                 <option value='weightdesc'>Weight descendente</option>
-            </select>
-            <select onChange={e => handleFilterCreated(e)}>
+            </Select>
+            <Select onChange={e => handleFilterCreated(e)}>
                 <option value='All'>All</option>              
                 <option value='name'>Existing breeds</option>
                 <option value='Our Breeds'>Our Breeds</option>
-            </select>
+            </Select>
             <FilterTemperament/>
+            <Buttonlp onClick={e => {handleClick(e)}}>
+               All Dogs
+            </Buttonlp>
             <Paginado
             dogsPerPage = {dogsPerPage}
             alldogs = {alldogs.length}
@@ -86,15 +93,15 @@ return (
             />
             {currentDog?.map( (element) => {
                   return (
-                    <div>
+                    <Divcard>
                         <Link to={'/home/' + element.id}>
                             <Card key={element.id} image={element.image? element.image : <img src="https://pixabay.com/es/photos/perro-tejonero-cachorro-mascota-1519374/"/>} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
                         </Link>
-                    </div>
+                    </Divcard>
                   );
                 })}           
         </div>
-    </div>
+    </Divhome>
 
 )
 }

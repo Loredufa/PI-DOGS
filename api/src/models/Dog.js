@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
     },
 
     weight_min:{
-      type:DataTypes.INTEGER,
+      type:DataTypes.STRING,
       allowNull:false,
     },
 
@@ -38,10 +38,12 @@ module.exports = (sequelize) => {
 
     life_span: {
       type:DataTypes.STRING,
+      allowNull:false,
     },
 
     image: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+      allowNull:false,
     },
 
     createdInDb: {
