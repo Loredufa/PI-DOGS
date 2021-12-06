@@ -3,9 +3,35 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 import { postDog, getTemperament} from '../actions/'
 import { useDispatch, useSelector } from 'react-redux';
-import { Buttonlp } from './styled/Buttonlp';
-import { Select } from './styled/Select';
 import { Input } from './styled/Input';
+import { Select } from './styled/Select';
+import { Button } from './styled/Button';
+import styled from 'styled-components';
+
+
+const H1title = styled.h1`
+font-family: 'Courgette', cursive;
+color:#252525;
+font-size: 25px;
+margin-left: 28%;
+`;
+const Divform = styled.div`
+font-family: 'Courgette', cursive;
+color:#252525;
+font-size: 15px;
+display: flex;
+justify-content: center;
+
+`;
+const Divend = styled.div`
+display: flex;
+justify-content: center;
+margin-top: 15px;
+`;
+const Diverror = styled.div`
+font-family: 'Courgette', cursive;
+color: #ff0000;
+`;
 
 
 export default function Create () {
@@ -78,12 +104,15 @@ useEffect(() => {
 
 return (
     <div>
-        <Link to= '/home'><Buttonlp>Back to home</Buttonlp></Link>
-        <h1>Here you can register the breed of your best friend</h1>
+        <Link to= '/home'><Button>Back to home</Button></Link>
+        <H1title>Here you can register the breed of your best friend</H1title>
+        <Divform>
         <form onSubmit={(e) => handleSubmit(e)}>
+           <Diverror>
           {error ? 'You must complete breed, weight and height fields':null}
+          </Diverror>
            <div>              
-               <label>Breed </label>
+               <label>Breed......... </label>
                <Input
                type='text'
                value={input.name} 
@@ -110,7 +139,7 @@ return (
                />               
            </div> 
            <div>
-               <label>Weigh min </label>
+               <label>Weigh min. </label>
                <Input
                type='text'
                value={input.weight_min}
@@ -128,7 +157,7 @@ return (
                />               
            </div> 
            <div>
-               <label>Life span </label>
+               <label>Life span ...</label>
                <Input
                type='text'
                value={input.life_span}
@@ -137,25 +166,28 @@ return (
                />               
            </div> 
            <div>
-               <label>Image </label>
+               <label>Image........ </label>
                <Input
                type='text'
                value={input.image}
                name = 'image'
                onChange={(e) => handleChange(e)}
                />               
-           </div> 
+           </div>
+            
+            <label>Temperament </label>
             <Select onChange={(e) => handleSelect(e)}>
                 {temperaments.map((tem) => (
                     <option value={tem.name}>{tem.name}</option>
                 ))}
             </Select>          
-            <Buttonlp type='submit'>Create breed</Buttonlp>
-            </form>  
+            <Button type='submit'>Create breed</Button>
             {input.temperament.map(el => 
-                <div className='divTem'>               
-                <Buttonlp className='botonX' onClick={() => handleDelete(el)}> {el} x</Buttonlp>
-            </div>
-           )}
+                <Divend>                              
+                <Button className='botonX' onClick={() => handleDelete(el)}> {el} x</Button>
+            </Divend>
+            )}
+            </form>           
+           </Divform>
     </div>
 )}

@@ -22,9 +22,9 @@ describe("Actions", () => {
     });
   }); 
   it('Debería retornar una action con la propiedad type "orderWeight" y el payload, su valor lo recibe por argumento:', () => {
-    expect(orderWeight("Big")).toEqual({
+    expect(orderWeight("weightasc")).toEqual({
       type: "ORDER_WEIGHT",
-      payload: "Big",
+      payload: "weightasc",
     });
   });
 })

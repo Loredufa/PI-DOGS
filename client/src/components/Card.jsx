@@ -11,7 +11,7 @@ height:25vw;
 overflow:hidden;
 background-color: #ccc9c9ec;
 backdrop-filter: blur(8px);
-margin: 1rem;
+margin: 2.5rem;
 border-radius: 10px;
 justify-content: center;
 align-items: center;

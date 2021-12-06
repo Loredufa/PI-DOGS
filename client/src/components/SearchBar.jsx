@@ -4,8 +4,13 @@ import { useDispatch } from 'react-redux';
 //action
 import { getSearchDog } from '../actions';
 // estilos
-import { Buttonlp } from './styled/Buttonlp';
+import styled from 'styled-components';
+import { Button } from './styled/Button';
 import { Input } from './styled/Input';
+
+const Divsearch = styled.div`
+margin-top: 40px;
+`;
 
 export default function SearchBar () {
 const dispatch = useDispatch()
@@ -24,15 +29,15 @@ function handleSubmit (e) {
 }
 
 return (
-    <div>
+    <Divsearch>
         <Input 
         type= 'text'
         placeholder = 'Breed...'
         onChange = {(e) => handleInputChange(e)}/>
 
-        <Buttonlp type='submit'onClick={(e) => handleSubmit(e)}>Search</Buttonlp>
+        <Button type='submit'onClick={(e) => handleSubmit(e)}>Search</Button>
         
-    </div>
+    </Divsearch>
 )
 
 }
