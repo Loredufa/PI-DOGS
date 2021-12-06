@@ -86,7 +86,7 @@ return (
                <label>Breed </label>
                <Input
                type='text'
-               value={input.name}
+               value={input.name} 
                name = 'name'
                onChange={(e) => handleChange(e)}
                />

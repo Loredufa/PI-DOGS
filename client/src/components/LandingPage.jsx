@@ -13,9 +13,9 @@ position: absolute;
 display: flex;
 top: 0px;
 bottom: 0;
-left:40px;
+left:0px;
 right:0;
-font-size: 1.5rem;
+font-size: 2rem;
 `;
 
 
@@ -25,7 +25,7 @@ export default function LandingPage() {
         <div >
            <h1>My Best Friend</h1>
             <Link to='/home'>
-                <Buttonlp>Enter</Buttonlp>
+                <Buttonlp>Lets Go In!</Buttonlp>
             </Link>
         </div>
     </Contenedor>

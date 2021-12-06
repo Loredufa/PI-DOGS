@@ -9,6 +9,7 @@ transition: background-color .3s ease;
 border-radius: 2.5px;
 margin-left: 0.2rem;
 margin-right: 0.2rem;
+text-align: center;
 
 &:hover {
     background-color:#f5bfee;  

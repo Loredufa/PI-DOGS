@@ -18,5 +18,47 @@ describe('Dog model', () => {
         Dog.create({ name: 'Pug' });
       });
     });
+// Mi codigo
+describe("weight_min", () => {
+  it("should throw an error if weight is null", (done) => {
+    Dog.create({})
+      .then(() => done(new Error("notNull Violation: dog.weight cannot be null")))
+      .catch(() => done());
+  });
+  it('should work when its a valid weight value', () => {
+    Dog.create({ weight: '8' });
+  });
+ });
+ describe("weight_max", () => {
+  it("should throw an error if weight is null", (done) => {
+    Dog.create({})
+      .then(() => done(new Error("notNull Violation: dog.weight cannot be null")))
+      .catch(() => done());
+  });
+  it('should work when its a valid weight value', () => {
+    Dog.create({ weight: '8' });
+  });
+ });
+ describe("height_min", () => {
+  it("should throw an error if height is null", (done) => {
+    Dog.create({})
+      .then(() => done(new Error("notNull Violation: dog.height cannot be null")))
+      .catch(() => done());
+  });
+  it('should work when its a valid height value', () => {
+    Dog.create({ height: '25' });
+  });
+ });
+ describe("height_max", () => {
+  it("should throw an error if height is null", (done) => {
+    Dog.create({})
+      .then(() => done(new Error("notNull Violation: dog.height cannot be null")))
+      .catch(() => done());
+  });
+  it('should work when its a valid height value', () => {
+    Dog.create({ height: '25' });
+  });
+ });
+
   });
 });

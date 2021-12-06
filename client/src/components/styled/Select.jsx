@@ -4,7 +4,6 @@ export const Select = styled.select`
 background-color: #a887a4;
 font-family: 'Courgette', cursive;
 cursor: pointer;
-width: 10%;
 display: inline-flex;
 padding: 0.3rem;
 border-radius: 50px;

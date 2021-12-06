@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
   sequelize.define('dog', {
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
 
     id: {
@@ -18,22 +18,22 @@ module.exports = (sequelize) => {
 
     height_min: {
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
     
     height_max: {
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
 
     weight_min:{
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
 
     weight_max:{
       type:DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
 
     life_span: {

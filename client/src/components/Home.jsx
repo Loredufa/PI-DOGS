@@ -13,7 +13,7 @@ import FilterTemperament from './FilterTemperament'
 // Estilos
 import { Buttonlp } from './styled/Buttonlp';
 import { Select } from './styled/Select';
-import { Divhome, Divcard } from './styled/Divhome';
+import { Divhome, Divcard, Filtros } from './styled/Divhome';
 import { Encabezado, Titulo } from './styled/Encabezado';
 
 
@@ -66,9 +66,10 @@ return (
         <Encabezado>     
         <Titulo>Welcome</Titulo>       
         <SearchBar/>
-        <Link to='/dog' >Create breed</Link>              
+        <Buttonlp><Link to='/dog' >Create your breed</Link> </Buttonlp>         
         </Encabezado>
         <div>
+            <Filtros>
             <Select onChange={e => handleSort(e)}>
                 <option value= 'asc'>Ascendente</option>
                 <option value= 'desc'>Descendente</option>
@@ -86,6 +87,7 @@ return (
             <Buttonlp onClick={e => {handleClick(e)}}>
                All Dogs
             </Buttonlp>
+            </Filtros>
             <Paginado
             dogsPerPage = {dogsPerPage}
             alldogs = {alldogs.length}
@@ -95,7 +97,11 @@ return (
                   return (
                     <Divcard>
                         <Link to={'/home/' + element.id}>
-                            <Card key={element.id} image={element.image? element.image : <img src="https://pixabay.com/es/photos/perro-tejonero-cachorro-mascota-1519374/"/>} name={element.name} temperament={element.temperament} weight_min={element.weight_min} />
+                            <Card key={element.id} 
+                            image={element.image}
+                            name={element.name} 
+                            temperament={element.temperament ? element.temperament : element.temperaments && element.temperaments.map ((temp) => temp.name + (' '))} 
+                            weight_min={element.weight_min} />
                         </Link>
                     </Divcard>
                   );
