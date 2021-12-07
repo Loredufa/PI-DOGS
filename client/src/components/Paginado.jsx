@@ -2,16 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ANav = styled.a`
-justify-content: center;
-flex-wrap: wrap;
 font-family: 'Courgette', cursive;
 cursor: pointer;
 color:#252525;
 transition: background-color .3s ease;
 border-radius: 50px;
-padding: 5px;
-margin-left: 0.5rem;
-margin-right: 0.5rem;
+padding: 10px;
+margin: 8px;
 text-align: center;
 
 &:hover {

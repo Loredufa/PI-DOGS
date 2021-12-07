@@ -3,34 +3,41 @@ import styled from 'styled-components';
 
 const DivC = styled.div`
 color:#252525;
-display: flex;
-flex-direction:column;
-font-size: 8pt;
+size: 7pt;
 width:16vw;
 height:25vw;
 overflow:hidden;
-background-color: #ccc9c9ec;
-backdrop-filter: blur(8px);
-margin: 2.5rem;
-border-radius: 10px;
-justify-content: center;
-align-items: center;
-
+background-color: #f4f4f4;
+margin: 2rem;
+padding: 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  &:hover {
+    .card__image {
+      filter: contrast(100%);
+    }
+  }
+}
 `;
 
 const Img = styled.img`
-margin: 0;
-overflow:hidden;
-position:relative;
-
+height: 50%;
+max-width: 100%;
+vertical-align: middle;
 `;
 
 const Description = styled.div`
 font-family: 'Courgette', cursive;
 padding: 0;
-margin: 1rem;
-text-justify: inter-word;
-font-size: 11px;
+text-justify: center;
+color: #252525;
+text-overflow: ellipsis;
+height: auto;
+word-wrap: break-word;
+overflow:hidden;
 `;
 
 export default function Card({name, weight_min, image, temperament}) {

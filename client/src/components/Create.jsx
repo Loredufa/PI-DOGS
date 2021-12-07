@@ -32,6 +32,11 @@ const Diverror = styled.div`
 font-family: 'Courgette', cursive;
 color: #ff0000;
 `;
+const Divfondo = styled.div`
+background-color:#dfd9e2;
+height: 608px
+`;
+
 
 
 export default function Create () {
@@ -103,7 +108,7 @@ useEffect(() => {
 
 
 return (
-    <div>
+    <Divfondo>
         <Link to= '/home'><Button>Back to home</Button></Link>
         <H1title>Here you can register the breed of your best friend</H1title>
         <Divform>
@@ -189,5 +194,5 @@ return (
             )}
             </form>           
            </Divform>
-    </div>
+    </Divfondo>
 )}

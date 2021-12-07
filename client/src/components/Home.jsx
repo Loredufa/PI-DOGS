@@ -14,25 +14,18 @@ import FilterTemperament from './FilterTemperament'
 import styled from 'styled-components';
 import { Select } from './styled/Select';
 import { Button } from './styled/Button';
-// import img from './assets/fondo1';
 
-// const Contenedorhome = styled.div`
-// background-image: url(${img});
-// background-size: cover;
-// position: absolute;
-// display: flex;
-// top: 0px;
-// bottom: 0;
-// left:0px;
-// right:0;
-// font-size: 2rem;
-// `;
-
+const Divgral = styled.div`
+background-color: #f4f4f4;
+`;
 const Divcards = styled.div`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
-margin: 30px;
+margin-left: 25px;
+margin-right: 25px;
+background-color: #bfb8e6;
+border-radius: 20px;
 `;
 const Divpaginado = styled.div`
 display: flex;
@@ -43,6 +36,7 @@ display: flex;
 justify-content: space-between;
 margin-left: 8%;
 margin-right: 10%;
+
 `;
 const Divhead = styled.div`
 display: flex;
@@ -52,6 +46,7 @@ font-size: 25px;
 justify-content: space-between;
 margin-left: 10%;
 margin-right: 10%;
+margin-bottom: 20px;
 `;
 const Divlik = styled.div`
 margin-top: 45px;
@@ -101,7 +96,7 @@ function handleSortWeight (e) {
 }
 
 return (
-    <div> 
+    <Divgral> 
         <Divhead>     
         <h1>Welcome</h1>       
         <SearchBar/>
@@ -152,7 +147,7 @@ return (
                 })}  
                 </Divcards>         
         </div>
-    </div>
+    </Divgral>
 
 )
 }

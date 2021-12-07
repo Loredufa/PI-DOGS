@@ -7,23 +7,42 @@ import { Button } from './styled/Button';
 import styled from 'styled-components';
 
 const Divdetail = styled.div`
-display: flex;
-font-family: 'Courgette', cursive;
-color:#252525;
-font-size: 15px;
-margin: 50px;
-margin-left: 15%;
-
+background: #DFC2F2;
+background-image: linear-gradient( 135deg, #CE9FFC 10%, #7367F0 100%);
+background-attachment: fixed;	
+background-size: cover;
+box-shadow: 0 15px 30px 1px rgba(128, 128, 128, 0.31);
+background: rgba(255, 255, 255, 0.90);
+text-align: center;
+border-radius: 5px;
+overflow: hidden;
+margin: 5em auto;
+height: 700x;
+width: 700px;
 `;
 const Imgdetail = styled.img`
-display: inline-flex;
-max-width: 80%;
-max-height: 60%;
-float: left;
+transition: all 0.3s ease-out;
+display: inline-block;
+position: relative;
+overflow: hidden;
+height: 100%;
+float: right;
+width: 50%;
+display: inline-block;
 border-radius: 10px;
-padding-right: 10px;
-background-size: cover;
+margin-left: 5px;
+margin-right: 10px;
+margin-bottom: 10px;
 `;
+const Divtext = styled.div`
+font-family: 'Courgette', cursive;
+display: inline-block;
+position: relative;
+font-size: 15px;
+color: #344055;
+margin: 0;
+`;
+
 
 export default function Detail () {
     const dispatch = useDispatch()
@@ -38,18 +57,20 @@ return(
     <Divdetail>
         { 
          detail.length > 0 ?
-            <div>
+            <Divtext>
                 <h1>Breed: {detail[0].name}</h1>
                 <Imgdetail src={detail[0].image}/>
                 <h2>Height min {detail[0].height_min} Height max {detail[0].height_max} cm at the withers</h2>
                 <h3>Weight min {detail[0].weight_min} Weihght max {detail[0].weight_max} Kgs</h3>            
                 <p>{detail[0].life_span} years average life span</p>
                 <h4>Temperament: {!detail[0].createdInDb ? detail[0].temperament + ' ' : detail[0].temperaments.map(el => el.name + (' '))}</h4>
-            </div> : <p>Loading...</p>
+            </Divtext> : <p>Loading...</p>
         }
+        <div>
         <Link to='/home'>
             <Button>Go back</Button>
         </Link>
+        </div>
     </Divdetail>
 )
 
