@@ -34,16 +34,15 @@ color: #ff0000;
 `;
 const Divfondo = styled.div`
 background-color:#dfd9e2;
-height: 608px
+height: 608px;
 `;
-
-
 
 export default function Create () {
 const dispatch = useDispatch()
 const navigate = useNavigate();
 const temperaments = useSelector((state) => state.temperaments);
 const [error, setError] = useState(false);
+const [errorValor, setErrorValor] = useState(false);
 
 const [input, setInput] = useState({
     name:'',
@@ -78,7 +77,11 @@ function handleSubmit(e) {
     if(input.name === '' || input.height_min === '' || input.height_max=== '' || input.weight_min === '' || input.weight_max === '') {
             setError(true);
             return;
-        } 
+        }
+    if(input.height_min <=0 || input.height_max <=0 || input.weight_min <=0 || input.weight_max <=0 || input.life_span <=0 ) {
+        setErrorValor(true);
+        return;
+    }
     // caso contrario paso los datos
     setError(false);
     dispatch(postDog(input))
@@ -115,6 +118,7 @@ return (
         <form onSubmit={(e) => handleSubmit(e)}>
            <Diverror>
           {error ? 'You must complete breed, weight and height fields':null}
+          {errorValor? 'weight, height and years of life must have a value greater than or equal to 1' : null}
           </Diverror>
            <div>              
                <label>Breed......... </label>
