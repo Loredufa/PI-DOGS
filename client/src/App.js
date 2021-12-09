@@ -4,7 +4,7 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Create from './components/Create';
 import Details from './components/Details';
-
+// coloco mis rutas
 
 function App() {
   return (

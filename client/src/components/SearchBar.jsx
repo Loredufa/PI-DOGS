@@ -15,6 +15,7 @@ margin-top: 40px;
 export default function SearchBar () {
 const dispatch = useDispatch()
 const [name, setName] = useState('');
+const [error, setError] = useState('');
 
 function handleInputChange(e) {
 e.preventDefault() 
@@ -27,13 +28,14 @@ function handleSubmit (e) {
 }
 
 return (
-    <Divsearch>
+    <Divsearch>     
         <Input 
+        key='search'
         type= 'text'
         placeholder = 'Breed...'
         onChange = {(e) => handleInputChange(e)}/>
-        <Button type='submit'onClick={(e) => handleSubmit(e)}>Search</Button>
-    </Divsearch>
+        <Button type='submit'onClick={(e) => handleSubmit(e)}>Search</Button>    
+    </Divsearch>       
 )
 
 }

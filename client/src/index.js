@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// importo provinder y store
 import { Provider } from 'react-redux';
 import { store } from './store';
 
-
+// envuelvo mi app en store
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode>

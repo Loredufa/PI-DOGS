@@ -20,13 +20,13 @@ padding: 1rem;
       filter: contrast(100%);
     }
   }
-}
 `;
 
 const Img = styled.img`
 height: 50%;
 max-width: 100%;
 vertical-align: middle;
+border-radius: 5px;
 `;
 
 const Description = styled.div`

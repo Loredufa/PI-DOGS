@@ -24,7 +24,7 @@ export default function Paginado ({dogsPerPage, alldogs, paginado}) {
     }
     return (
         <nav>
-            <ul className='paginado'>
+            <ul>
                 { pageNumber &&
                 pageNumber.map(number => (
                     <ANav onClick={() => paginado(number)}>{number} </ANav>

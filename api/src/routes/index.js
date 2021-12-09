@@ -3,7 +3,6 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require ('axios');
 const { Dog, Temperament, temperament_dog } = require ('../db.js')
-//router.use(express.json())
 const { API_KEY } = process.env;
 
 const router = Router();

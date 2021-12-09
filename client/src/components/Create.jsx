@@ -38,7 +38,7 @@ height: 608px;
 `;
 
 export default function Create () {
-const dispatch = useDispatch()
+const dispatch = useDispatch();
 const navigate = useNavigate();
 const temperaments = useSelector((state) => state.temperaments);
 const [error, setError] = useState(false);
@@ -121,63 +121,70 @@ return (
           {errorValor? 'weight, height and years of life must have a value greater than or equal to 1' : null}
           </Diverror>
            <div>              
-               <label>Breed......... </label>
                <Input
+               key='name'
                type='text'
+               placeholder='breed...'
                value={input.name} 
                name = 'name'
                onChange={(e) => handleChange(e)}
                />
            </div> 
-           <div>
-               <label>Height min </label>
+           <div>              
                <Input
+               key='height_min'
                type='text'
+               placeholder='Height min ... cm'
                value={input.height_min}
                name = 'height_min'
                onChange={(e) => handleChange(e)}
                />               
            </div> 
            <div>
-               <label>Height max </label>
                <Input
+               key='height_max'
                type='text'
+               placeholder='Height max... kg'
                value={input.height_max}
                name = 'height_max'
                onChange={(e) => handleChange(e)}
                />               
            </div> 
            <div>
-               <label>Weigh min. </label>
                <Input
+               key='weight_min'
                type='text'
+               placeholder='Weigh min... kg'
                value={input.weight_min}
                name = 'weight_min'
                onChange={(e) => handleChange(e)}
                />               
            </div> 
            <div>
-               <label>Weigh max </label>
                <Input
+               key='weight_max'
                type='text'
+               placeholder='Weigh max... kg'
                value={input.weight_max}
                name = 'weight_max'
                onChange={(e) => handleChange(e)}
                />               
            </div> 
            <div>
-               <label>Life span ...</label>
                <Input
+               key='life_span'
                type='text'
+               placeholder='Life span... years'
                value={input.life_span}
                name = 'life_span'
                onChange={(e) => handleChange(e)}
                />               
            </div> 
            <div>
-               <label>Image........ </label>
                <Input
+               key='image'
                type='text'
+               placeholder='URL Image'
                value={input.image}
                name = 'image'
                onChange={(e) => handleChange(e)}

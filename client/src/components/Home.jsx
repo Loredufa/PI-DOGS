@@ -59,7 +59,7 @@ const dispatch = useDispatch()
 const alldogs = useSelector ((state) => state.dogs)
 const [orden, setOrden] = useState('')
 const [currentPage, setCurrentPage] = useState(1)
-const [dogsPerPage] = useState(8)
+const [dogsPerPage, setdogsPerpage] = useState(8)
 const indexOfLastDog = currentPage * dogsPerPage //8
 const indexOffFirstDog = indexOfLastDog - dogsPerPage //0
 const currentDog = alldogs.slice(indexOffFirstDog, indexOfLastDog)
